@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +13,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,8 +33,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background) {
                     GreetingImage(
-                        message = "Happy Birthday Sam!",
-                        from = "From Emma"
+                        message = stringResource(R.string.jetpack_compose_tutorial),
+                        resume = stringResource(R.string.jetpack_compose_is_a_modern_toolkit),
+                        body = stringResource(R.string.msj_body)
                     )
 
                 }
@@ -46,39 +45,50 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column (verticalArrangement = Arrangement.Center,
-        modifier = modifier.padding(8.dp)
+fun GreetingText(message: String, from: String, body: String, modifier: Modifier = Modifier) {
+    Column (
+        modifier = modifier
+            .fillMaxSize()
+            .padding(start= 16.dp, top = 16.dp)
+
     ) {
         Text(
             text = message,
-            fontSize = 95.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center
+            fontSize = 24.sp,
+            textAlign = TextAlign.Justify
         )
         Text(
             text = from,
-            fontSize = 36.sp,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
             modifier = Modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .padding(top = 16.dp)
+
+        )
+        Text(
+            text = body,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(top = 16.dp)
+
         )
     }
 }
 
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.androidparty)
-    Box(modifier) {
+fun GreetingImage(message: String, resume: String, body: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.bg_compose_background)
+    Column (modifier) {
         Image(
             painter = image,
             contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alpha = 0.5F
+            contentScale = ContentScale.FillWidth,
         )
         GreetingText(
             message = message,
-            from = from,
+            from = resume,
+            body=body,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
@@ -92,8 +102,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
         GreetingImage(
-            message = stringResource(R.string.happy_birthday_text),
-            from = stringResource(R.string.signature_text)
+            message = stringResource(R.string.jetpack_compose_tutorial),
+            resume = stringResource(R.string.jetpack_compose_is_a_modern_toolkit),
+            body = stringResource(R.string.msj_body)
         )
     }
 }
