@@ -1,0 +1,80 @@
+# =============== #
+# Android Studio  #
+# =============== #
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ===================== #
+# Build / Gradle Output #
+# ===================== #
+/.gradle
+/build
+**/build
+/local.properties
+/.gradle
+/captures/
+/output/
+
+# ========== #
+# Kotlin/Java #
+# ========== #
+*.class
+*.jar
+*.war
+*.ear
+
+# =============== #
+# OS-specific     #
+# =============== #
+.DS_Store
+Thumbs.db
+
+# ============= #
+# Log Files     #
+# ============= #
+*.log
+
+# ====================== #
+# Android Specific Files #
+# ====================== #
+*.apk
+*.ap_
+*.dex
+*.aar
+*.so
+
+# ====================== #
+# Jetpack Compose Preview#
+# ====================== #
+/.idea/deploymentTargetDropDown.xml
+/.idea/preview*
+/.idea/compose-designtime/
+
+# ========== #
+# Sign Keys  #
+# ========== #
+*.jks
+*.keystore
+*.pem
+
+# ===================== #
+# Miscellaneous         #
+# ===================== #
+*.tmp
+*.swp
+*.swo
+*.orig
+
+# ===================== #
+# Local Environment     #
+# ===================== #
+.env
+.env.*
+
+# ===================== #
+# Xcode (macOS users)   #
+# ===================== #
+xcuserdata/
+*.xcuserstate
