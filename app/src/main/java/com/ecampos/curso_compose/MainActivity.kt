@@ -5,14 +5,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -33,9 +37,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background) {
                     GreetingImage(
-                        message = stringResource(R.string.jetpack_compose_tutorial),
-                        resume = stringResource(R.string.jetpack_compose_is_a_modern_toolkit),
-                        body = stringResource(R.string.msj_body)
+                        message1 = stringResource(R.string.all_tasks_completed),
+                        message2 = stringResource(R.string.nice_work)
                     )
 
                 }
@@ -45,53 +48,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, body: String, modifier: Modifier = Modifier) {
-    Column (
-        modifier = modifier
-            .fillMaxSize()
-            .padding(start= 16.dp, top = 16.dp)
-
-    ) {
-        Text(
-            text = message,
-            fontSize = 24.sp,
-            textAlign = TextAlign.Justify
-        )
-        Text(
-            text = from,
-            fontSize = 16.sp,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(top = 16.dp)
-
-        )
-        Text(
-            text = body,
-            fontSize = 16.sp,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(top = 16.dp)
-
-        )
-    }
-}
-
-@Composable
-fun GreetingImage(message: String, resume: String, body: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.bg_compose_background)
-    Column (modifier) {
+fun GreetingImage(message1: String, message2: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.circle)
+    Column ( modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center ) {
         Image(
             painter = image,
             contentDescription = null,
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(200.dp)
         )
-        GreetingText(
-            message = message,
-            from = resume,
-            body=body,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text(
+            text = message1,
+            fontSize = 24.sp,
+            textAlign = TextAlign.Center,
+
+            )
+        Text(
+            text = message2,
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 8.dp)
         )
     }
 
@@ -102,9 +82,8 @@ fun GreetingImage(message: String, resume: String, body: String, modifier: Modif
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
         GreetingImage(
-            message = stringResource(R.string.jetpack_compose_tutorial),
-            resume = stringResource(R.string.jetpack_compose_is_a_modern_toolkit),
-            body = stringResource(R.string.msj_body)
+            message1 = stringResource(R.string.all_tasks_completed),
+            message2 = stringResource(R.string.nice_work)
         )
     }
 }
